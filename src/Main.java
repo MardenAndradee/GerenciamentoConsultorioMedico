@@ -12,9 +12,9 @@ public class Main {
         List<Medico> medicos = new ArrayList<>();
         List<Consulta> consultas = new ArrayList<>();
 
-        int opc = 0;
-        int opcModulo =0;
-        int index = 0;
+        int opc;
+        int opcModulo;
+        int index;
 
         do {
 
@@ -81,8 +81,18 @@ public class Main {
                        int escolha = sc.nextInt();
 
 
-                       medicos.remove(escolha - 1);
-                       System.out.println("Removido com sucesso!");
+                       //verifica se o medico não tem consulta agendada
+                       for (Consulta c : consultas) {
+                           System.out.println(c.getMedico() + c.getStatus());
+                           if (c.getStatus().equals("Agendado")) {
+                               System.out.println("O médico tem consultas agendadas, antes de excluir," +
+                                       "cancele as consultas agendadas");
+                               break;
+                           }else{
+                               medicos.remove(escolha - 1);
+                               System.out.println("Removido com sucesso!");
+                           }
+                       }
 
                    }else{
                        break;
@@ -135,8 +145,20 @@ public class Main {
                        int escolha = sc.nextInt();
 
 
-                       pacientes.remove(escolha - 1);
-                       System.out.println("Removido com sucesso!");
+                       //verifica se o medico não tem consulta agendada
+                       for (Consulta c : consultas) {
+                           System.out.println(c.getPaciente() + c.getStatus());
+                           if (c.getStatus().equals("Agendado")) {
+                               System.out.println("O paciente tem consultas agendadas, antes de excluir," +
+                                       "cancele as consultas agendadas");
+                               break;
+                           }else{
+                               pacientes.remove(escolha - 1);
+                               System.out.println("Removido com sucesso!");
+                           }
+                       }
+
+
 
                    }else{
                        break;
