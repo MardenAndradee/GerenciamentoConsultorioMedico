@@ -45,7 +45,7 @@ public class Consulta implements Agendamento {
         this.medico = medico;
     }
 
-    Consulta(){};
+    Consulta(){}
     Consulta(Paciente paciente, Medico medico, String dataConsulta, String horaConsulta, String status){
         this.paciente = paciente;
         this.medico = medico;
@@ -66,7 +66,14 @@ public class Consulta implements Agendamento {
 
     @Override
     public String toString() {
-        return "Paciente: " + this.paciente + ", Médico:" + this.medico + ", Data e hora: " +
+        return "Paciente: " + this.paciente.getNome() + ", Médico:" + this.medico.getNome() + ", Data e hora: " +
                 this.dataConsulta + " " + this.horaConsulta + ", Status: " + this.status;
     }
+
+    public String ConsultasEspecialidade(){
+        return "Médico:" + this.medico.getNome() + ",Especialidade: " + this.medico.getEspecialidade() + ", Data e hora: " +
+                this.dataConsulta + " " + this.horaConsulta + ", Status: " + this.status;
+    }
+
+
 }

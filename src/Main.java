@@ -22,6 +22,7 @@ public class Main {
             System.out.println("1.Gerenciar Médicos");
             System.out.println("2.Gerenciar Pacientes");
             System.out.println("3.Gerenciar Consultas");
+            System.out.println("4.Relatório mensal por especialidade médica");
             System.out.println("0.Sair");
 
 
@@ -34,7 +35,8 @@ public class Main {
                    System.out.println("1.Cadastrar Médicos");
                    System.out.println("2.Vizualizar médicos cadastrados");
                    System.out.println("3.Remover Médico");
-                   System.out.println("0.Sair");
+                   System.out.println("3.Relatório mensal de consultas por especialidade médica ");
+                   System.out.println("0.Voltar");
                    opcModulo = sc.nextInt();
 
                    if(opcModulo == 1){
@@ -104,7 +106,7 @@ public class Main {
                    System.out.println("1.Cadastrar Pacientes");
                    System.out.println("2.Vizualizar Pacientes cadastrados");
                    System.out.println("3.Remover Paciente");
-                   System.out.println("0.Sair");
+                   System.out.println("0.Voltar");
                    opcModulo = sc.nextInt();
 
                    if(opcModulo == 1){
@@ -171,7 +173,7 @@ public class Main {
                    System.out.println("1.Cadastrar Consultas");
                    System.out.println("2.Vizualizar Consultas cadastradas");
                    System.out.println("3.Cancelar Consulta");
-                   System.out.println("0.Sair");
+                   System.out.println("0.Voltar");
                    opcModulo = sc.nextInt();
 
                    if(opcModulo == 1){
@@ -277,6 +279,30 @@ public class Main {
                    }else{
                        break;
                    }
+
+                   break;
+
+               case 4:
+                   System.out.println("Digite o mês (1-12)");
+                   int mes = sc.nextInt();
+
+                   System.out.println("Digite o ano: ");
+                   int ano = sc.nextInt();
+
+                   System.out.println("Relatório de Consultas:");
+
+                   for (Consulta consulta : consultas) {
+                       String[] dataSplit = consulta.getDataConsulta().split("/");
+                       int mesConsulta = Integer.parseInt(dataSplit[1]);
+                       int anoConsulta = Integer.parseInt(dataSplit[2]);
+
+                       if (mesConsulta == mes && anoConsulta == ano) {
+
+                           System.out.println(consulta.ConsultasEspecialidade());
+                       }
+                   }
+
+                   break;
 
            }
 
